@@ -8,9 +8,9 @@ print("API token set for all requests.")
 
 scripts = {
     "publicprofile_list": r"c:\...\publicprofile_list.py",
-    "process_raids": r"c:\...\process_raids.py",
-    "store_character_data": r"c:\...\store_character_data.py",
-    "infographic_maker": r"c:\...\infographic_maker.py"
+    "process_raids": r"c:\...\raiddays\process_raids.py",
+    "store_character_data": r"c:\...\raiddays\store_character_data.py",
+    "infographic_maker": r"c:\...\raiddays\infographic_maker.py"
 }
 
 file_name = "day15-6.csv"  # Taken from valor
@@ -48,3 +48,4 @@ else:
     print("Clearing deltas aborted.")
 
 print("Daily pipeline completed successfully.")
+
