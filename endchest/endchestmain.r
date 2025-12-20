@@ -1,7 +1,7 @@
 library(dplyr)
 library(tidyr)
 library(mclust)
-setwd("C:/Users/Student/Desktop/wynn programs/raiddays/endchest")
+setwd("C:/your/wd")
 source("endchest_chests.r")
 source("endchest_dprep.r")
 source("endchest_probab.r")
@@ -118,3 +118,4 @@ for (raid in c("NOTG", "NOL", "TCC", "TNA")) {
 }
 
 cat("\nend\n")
+
