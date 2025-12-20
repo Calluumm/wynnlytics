@@ -2,8 +2,8 @@ library(dplyr)
 library(tidyr)
 
 source("endchest_chests.r")
-setwd("C:/Users/Student/Desktop/wynn programs/raiddays/endchest")
-loadRaidData <- function(csvPath = "raid_rewards_data.csv") {
+setwd("C:/your/wd")
+loadRaidData <- function(csvPath = "raid_rewards_data.csv") { #set to whatever filename you end up with this is default scraper output
   raidr <- read.csv(csvPath, check.names = TRUE)
   raidr <- raidr |> distinct()
   raidr <- raidr |> filter(Total.Pulls <= 50)
@@ -85,3 +85,4 @@ prepWideItemsAgg <- function(raidLongAgg) {
   
   return(itemsWideAgg)
 }
+
