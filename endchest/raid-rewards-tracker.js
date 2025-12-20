@@ -1,5 +1,5 @@
 JsMacros.assertEvent(event, "Service");
-
+//Made by MFLR5 and NHK, added here for complete-ness
 class RewardChest {
   constructor(pos, raid) {
     this.pos = pos;
