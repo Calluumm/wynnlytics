@@ -7,7 +7,7 @@ import numpy as np
 
 dir = r"c:\Users\Student\Desktop\wynn programs\raiddays"
 playercount_data_path = os.path.join(dir, "gambit_may.csv") #normalisation data no longer able to be used since privatisation, this would need to be normalised against itself
-april15_data_path = os.path.join(dir, "may15.csv") #valor raid data
+april15_data_path = os.path.join(dir, "may15.csv") #valor raid data, individuals raid completions
 gambit_data_path = os.path.join(dir, "gambitss.csv") #csv boolean represntation of present gambits per day
 playercount_data = pd.read_csv(playercount_data_path)
 april15_data = pd.read_csv(april15_data_path)
@@ -25,19 +25,15 @@ def get_raid_day(ts): #sets the day in line with gambit flip
         dt -= timedelta(days=1)
     return dt.date()
 
-print("Starting session calc")
 sessions['raid_day'] = sessions['join_time'].apply(get_raid_day)
 sessions['session_hours'] = (sessions['retrieved_time'] - sessions['join_time']).dt.total_seconds() / 3600
 
 print("sessions loaded:", sessions.shape)
-print(sessions.head())
 player_day_playtime = sessions.groupby(['player_uuid', 'raid_day'])['session_hours'].sum().reset_index()
 print("player_day_playtime:", player_day_playtime.shape)
-print(player_day_playtime.head())
 playtime_per_day = player_day_playtime.groupby('raid_day')['session_hours'].sum().reset_index()
 playtime_per_day.rename(columns={'session_hours': 'playtime_hours'}, inplace=True)
 print("playtime_per_day:", playtime_per_day.shape)
-print(playtime_per_day.head())
 
 def adjust_to_raid_day(unix_time):
     dt = datetime.utcfromtimestamp(unix_time)
@@ -282,3 +278,4 @@ for archetype in sorted(arcr_sens.keys()):
         for gambit, impact in sorted_impacts:
             if not np.isnan(impact):
                 print(f"    {gambit}: {impact:.4f}")
+
