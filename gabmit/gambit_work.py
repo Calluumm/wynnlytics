@@ -279,3 +279,39 @@ for archetype in sorted(arcr_sens.keys()):
             if not np.isnan(impact):
                 print(f"    {gambit}: {impact:.4f}")
 
+#csv saves
+ova_gambitd = pd.DataFrame(sorted_gambitd, columns=['gambit', 'impact'])
+ova_gambitd.to_csv(os.path.join(dir, "ova_gambitd.csv"), index=False)
+
+agsens_rows = []
+for archetype, gambit_impacts in agsens.items():
+    for gambit, impact in gambit_impacts.items():
+        agsens_rows.append({'archetype': archetype, 'gambit': gambit, 'impact': impact})
+agsens_df = pd.DataFrame(agsens_rows)
+agsens_df.to_csv(os.path.join(dir, "archetype_gam_raid.csv"), index=False)
+
+sensitivity_rows = []
+for archetype, gambit_impacts in sensitivity.items():
+    for gambit, impact in gambit_impacts.items():
+        sensitivity_rows.append({'archetype': archetype, 'gambit': gambit, 'impact': impact})
+sensitivity_df = pd.DataFrame(sensitivity_rows)
+sensitivity_df.to_csv(os.path.join(dir, "archetype_share_gam.csv"), index=False)
+
+overall_scores_df = pd.DataFrame(overall_scores, columns=['archetype', 'mean_sensitivity'])
+overall_scores_df.to_csv(os.path.join(dir, "archetype_ovasense.csv"), index=False)
+
+arcr_rows = []
+for archetype in sorted(arcr_sens.keys()):
+    for raid in raidsinc:
+        gambit_impacts = arcr_sens[archetype][raid]
+        for gambit, impact in gambit_impacts.items():
+            if not np.isnan(impact):
+                arcr_rows.append({
+                    'archetype': archetype,
+                    'raid': raid,
+                    'gambit': gambit,
+                    'impact': impact
+                })
+arcr_df = pd.DataFrame(arcr_rows)
+arcr_df.to_csv(os.path.join(dir, "archtype_gambit_sens.csv"), index=False)
+log_print("\nGenerated csv's scriupt over")
