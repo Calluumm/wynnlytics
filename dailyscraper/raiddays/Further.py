@@ -16,7 +16,12 @@ reskin_mapping = {
 patches = {
     "2.1.X": "2025-04-18",
     "2.1.1": "2025-05-02",
-    "2.1.2": "2025-05-16"
+    "2.1.2": "2025-05-16",
+    "2.1.3": "2025-08-07",
+    "2.1.4": "2025-09-26",
+    "2.1.5": "2025-10-10",
+    "2.1.6": "2025-11-21",
+    "2.1.7": "2025-12-12"
 }
 archetype_colors = {
     "Boltslinger": "#ffcc00", #archer
@@ -78,7 +83,8 @@ mythic_colors = {
     "Fatal": "#C5B012", 
     "Lament": "#4682B4", 
     "Trance": "#EC674F",
-    "Singularity": "#DA70D6",  
+    "Singularity": "#DA70D6",
+    "Quetz": "#055718",
     
     #Archer
     "Ignis": "#B41F1F",
@@ -128,36 +134,78 @@ mythic_colors = {
 
 mythic_guess_patterns = {
     "mage": {
-        "Monster": [
-            {"stat": "defense", "min": 75},
-            {"stat": "dexterity", "max": 40}
-        ],
+        "Monster": {
+            "default": [
+                {"stat": "defense", "min": 75},
+                {"stat": "dexterity", "max": 80}
+            ],
+            "riftwalker": [
+                {"stat": "defense", "min": 60},
+                {"stat": "dexterity", "max": 50}
+            ],
+            "lightbender": [
+                {"stat": "defense", "min": 75},
+                {"stat": "dexterity", "max": 80}
+            ]
+        },
         "Warp": [
-            {"stat": "agility", "min": 65},
-            {"stat": "defense", "max": 20}
+            {"stat": "agility", "min": 58},
+            {"stat": "defense", "max": 35}
         ],
         "Gaia": [
             {"stat": "strength", "min": 80}
         ],
         "Fatal": [
-            {"stat": "dexterity", "min": 80},
-            {"stat": "defense", "min": 20}
+            {"stat": "dexterity", "min": 75},
+            {"stat": "defense", "max": 20},
+            {"stat": "agility", "max": 50}
         ],
         "Lament": [
-            {"stat": "intelligence", "min": 70},
-            {"stat": "dexterity", "max": 60},
-            {"stat": "defense", "max": 50},
-            {"stat": "agility", "max": 50}
+            {"stat": "intelligence", "min": 65},
+            {"stat": "dexterity", "max": 70},
+            {"stat": "defense", "max": 60},
+            {"stat": "strength", "max": 60},
+            {"stat": "agility", "max": 60}
         ],
         "Trance": [
             {"stat": "defense", "min": 60},
+            {"stat": "defense", "max": 80},
             {"stat": "dexterity", "min": 40}
         ],
-        "Singularity": [
-            {"stat": "intelligence", "min": 40},
-            {"stat": "defense", "min": 30},
-            {"stat": "dexterity", "min": 30},
-            {"stat": "agility", "min": 30}
+        "Singularity": {
+            "default": [
+                {"stat": "intelligence", "min": 40},
+                {"stat": "intelligence", "max": 65},
+                {"stat": "defense", "min": 20},
+                {"stat": "dexterity", "min": 20},
+                {"stat": "agility", "min": 20},
+                {"stat": "strength", "min": 20},
+                {"stat": "agility", "max": 29}
+            ],
+            "riftwalker": [
+                {"stat": "intelligence", "min": 30},
+                {"stat": "intelligence", "max": 60},
+                {"stat": "defense", "min": 20},
+                {"stat": "dexterity", "min": 20},
+                {"stat": "agility", "min": 20},
+                {"stat": "strength", "min": 20},
+                {"stat": "agility", "max": 35}
+            ],
+            "lightbender": [
+                {"stat": "intelligence", "min": 45},
+                {"stat": "intelligence", "max": 65},
+                {"stat": "defense", "min": 20},
+                {"stat": "dexterity", "min": 20},
+                {"stat": "agility", "min": 20},
+                {"stat": "strength", "min": 20},
+                {"stat": "agility", "max": 29}
+            ]
+        },
+        "Quetz": [
+            {"stat": "agility", "min": 45},
+            {"stat": "agility", "max": 57},
+            {"stat": "strength", "min": 30},
+            {"stat": "intelligence", "max": 10}
         ]
     },
     "archer": {
@@ -168,20 +216,24 @@ mythic_guess_patterns = {
             {"stat": "agility", "min": 80}
         ],
         "Grandmother": [
-            {"stat": "strength", "min": 80},
-            {"stat": "defense", "max": 60}
+            {"stat": "strength", "min": 85},
+            {"stat": "defense", "max": 60},
+            {"stat": "agility", "max": 40},
+            {"stat": "dexterity", "max": 80}
         ],
         "Divzer": [
-            {"stat": "dexterity", "min": 80},
+            {"stat": "dexterity", "min": 75},
+            {"stat": "strength", "max": 80},
             {"stat": "agility", "max": 10},
             {"stat": "defense", "max": 50}
         ],
         "Spring": [
             {"stat": "intelligence", "min": 75},
-            {"stat": "dexterity", "max": 10}
+            {"stat": "dexterity", "max": 40}
         ],
         "Laby": [
-            {"stat": "strength", "min": 60},
+            {"stat": "strength", "min": 50},
+            {"stat": "strength", "max": 80},
             {"stat": "defense", "min": 60}
         ],
         "Freedom": [
@@ -191,47 +243,142 @@ mythic_guess_patterns = {
             {"stat": "intelligence", "min": 30}
         ],
         "Epoch": [
-            {"stat": "agility", "min": 40},
-            {"stat": "dexterity", "min": 60},
-            {"stat": "strength", "min": 40}
+            {"stat": "agility", "min": 30},
+            {"stat": "dexterity", "min": 40},
+            {"stat": "strength", "min": 40},
+            {"stat": "intelligence", "max": 50}
         ]
     },
     "assassin": {
         "Inferno": [
             {"stat": "defense", "min": 80}
         ],
-        "Weathered": [
-            {"stat": "agility", "min": 80}
-        ],
+        "Weathered": {
+            "default": [
+                {"stat": "agility", "min": 80},
+                {"stat": "defense", "max": 29}
+            ],
+            "shadestepper": [
+                {"stat": "agility", "min": 75},
+                {"stat": "defense", "max": 25},
+            ],
+            "trickster": [
+                {"stat": "agility", "min": 80},
+                {"stat": "defense", "max": 30},
+                {"stat": "intelligence", "min": 35},
+                {"stat": "intelligence", "max": 65}
+            ],
+            "acrobat": [
+                {"stat": "agility", "min": 67},
+                {"stat": "defense", "max": 35},
+                {"stat": "intelligence", "min": 20},
+                {"stat": "intelligence", "max": 50}
+            ]
+        },
         "Grimtrap": [
-            {"stat": "strength", "min": 80},
-            {"stat": "dexterity", "max": 79}
+            {"stat": "strength", "min": 70},
+            {"stat": "dexterity", "max": 79},
+            {"stat": "defense", "max": 60}
         ],
         "Cataclysm": [
             {"stat": "dexterity", "min": 80},
             {"stat": "strength", "max": 79}
         ],
-        "Nirvana": [
-            {"stat": "intelligence", "min": 80},
-            {"stat": "dexterity", "max": 50},
-            {"stat": "strength", "max": 50}
-        ],
+        "Nirvana": {
+            "default": [
+                {"stat": "intelligence", "min": 80},
+                {"stat": "dexterity", "max": 70},
+                {"stat": "strength", "max": 70},
+                {"stat": "defense", "max": 30}
+            ],
+            "shadestepper": [
+                {"stat": "intelligence", "min": 85},
+                {"stat": "dexterity", "max": 55},
+                {"stat": "strength", "max": 45},
+                {"stat": "defense", "max": 25}
+            ],
+            "trickster": [
+                {"stat": "intelligence", "min": 75},
+                {"stat": "dexterity", "max": 75},
+                {"stat": "strength", "max": 75},
+                {"stat": "defense", "max": 35}
+            ],
+            "acrobat": [
+                {"stat": "intelligence", "min": 60},
+                {"stat": "dexterity", "max": 70},
+                {"stat": "strength", "max": 65},
+                {"stat": "defense", "max": 40}
+            ]
+        },
         "Nullification": [
             {"stat": "strength", "min": 40},
             {"stat": "agility", "min": 30},
-            {"stat": "intelligence", "min": 30}
+            {"stat": "intelligence", "min": 30},
+            {"stat": "defense", "max": 40},
+            {"stat": "agility", "max": 40},
+            {"stat": "intelligence", "max": 60}
         ],
-        "Oblivion": [
-            {"stat": "dexterity", "min": 55},
-            {"stat": "intelligence", "min": 55},
-            {"stat": "dexterity", "max": 85},
-            {"stat": "strength", "max": 50}
-        ],
-        "Hana": [
-            {"stat": "agility", "min": 60},
-            {"stat": "dexterity", "max": 60},
-            {"stat": "intelligence", "min": 60}
-        ]
+        "Oblivion": {
+            "default": [
+                {"stat": "dexterity", "min": 55},
+                {"stat": "intelligence", "min": 55},
+                {"stat": "dexterity", "max": 85},
+                {"stat": "strength", "max": 50},
+                {"stat": "intelligence", "max": 80}
+            ],
+            "shadestepper": [
+                {"stat": "dexterity", "min": 55},
+                {"stat": "intelligence", "min": 55},
+                {"stat": "dexterity", "max": 85},
+                {"stat": "strength", "max": 50},
+                {"stat": "intelligence", "max": 80}
+            ],
+            "trickster": [
+                {"stat": "dexterity", "min": 50},
+                {"stat": "intelligence", "min": 40},
+                {"stat": "dexterity", "max": 80},
+                {"stat": "strength", "max": 60},
+                {"stat": "intelligence", "max": 75}
+            ],
+            "acrobat": [
+                {"stat": "dexterity", "min": 55},
+                {"stat": "intelligence", "min": 55},
+                {"stat": "dexterity", "max": 65},
+                {"stat": "strength", "max": 50},
+                {"stat": "intelligence", "max": 70},
+                {"stat": "agility", "max": 30}
+            ]
+        },
+        "Hana": {
+            "default": [
+                {"stat": "agility", "min": 40},
+                {"stat": "agility", "max": 75},
+                {"stat": "dexterity", "max": 60},
+                {"stat": "intelligence", "min": 60},
+                {"stat": "strength", "max": 40},
+                {"stat": "dexterity", "min": 20}
+            ],
+            "shadestepper": [
+                {"stat": "agility", "min": 555},
+                {"stat": "dexterity", "max": 55},
+                {"stat": "intelligence", "min": 65},
+                {"stat": "strength", "max": 35}
+            ],
+            "trickster": [
+                {"stat": "agility", "min": 455},
+                {"stat": "dexterity", "max": 65},
+                {"stat": "intelligence", "min": 55},
+                {"stat": "strength", "max": 45}
+            ],
+            "acrobat": [
+                {"stat": "agility", "min": 37},
+                {"stat": "agility", "max": 75},
+                {"stat": "dexterity", "max": 60},
+                {"stat": "intelligence", "min": 40},
+                {"stat": "strength", "max": 40},
+                {"stat": "defense", "max": 40}
+            ]
+        }
     },
     "warrior": {
         "Guardian": [
@@ -268,10 +415,11 @@ mythic_guess_patterns = {
             {"stat": "dexterity", "max": 20}
         ],
         "Apoc": [
-            {"stat": "defense", "min": 60},
+            {"stat": "defense", "min": 40},
             {"stat": "strength", "min": 40},
             {"stat": "intelligence", "max": 20},
-            {"stat": "defense", "max": 80}
+            {"stat": "dexterity", "min": 30},
+            {"stat": "defense", "max": 60}
         ],
         "Bloodbath": [
             {"stat": "strength", "min": 75},
@@ -281,24 +429,26 @@ mythic_guess_patterns = {
     },
     "shaman": {
         "Absolution": [
-            {"stat": "defense", "min": 75},
+            {"stat": "defense", "min": 65},
             {"stat": "agility", "max": 70}
         ],
         "Olympic": [
-            {"stat": "agility", "min": 80},
-            {"stat": "defense", "max": 40}
+            {"stat": "agility", "min": 60},
+            {"stat": "defense", "max": 40},
+            {"stat": "dexterity", "max": 80}
         ],
         "Toxo": [
             {"stat": "strength", "min": 85},
-            {"stat": "intelligence", "max": 20}
+            {"stat": "intelligence", "max": 20},
+            {"stat": "agility", "max": 30}
         ],
         "Sunstar": [
             {"stat": "defense", "max": 60},
-            {"stat": "dexterity", "min": 80}
+            {"stat": "dexterity", "min": 70}
         ],
         "Hadal": [
-            {"stat": "defense", "max": 40},
-            {"stat": "intelligence", "min": 80}
+            {"stat": "defense", "max": 50},
+            {"stat": "intelligence", "min": 85}
         ],
         "Fantasia": [
             {"stat": "strength", "min": 40},
@@ -308,20 +458,53 @@ mythic_guess_patterns = {
         ],
         "Reso": [
             {"stat": "strength", "min": 60},
-            {"stat": "intelligence", "min": 60},
+            {"stat": "intelligence", "min": 50},
             {"stat": "defense", "max": 40}
         ],
         "Aftershock": [
             {"stat": "strength", "min": 70},
             {"stat": "agility", "min": 30},
-            {"stat": "intelligence", "max": 5}
+            {"stat": "intelligence", "max": 5},
+            {"stat": "agility", "max": 60}
         ],
-        "Immolation": [
-            {"stat": "defense", "min": 70},
-            {"stat": "agility", "min": 70}
-        ]
+        "Immolation": {
+            "default": [
+                {"stat": "defense", "min": 50},
+                {"stat": "agility", "min": 50},
+                {"stat": "intelligence", "max": 30}
+            ],
+            "acolyte": [
+                {"stat": "defense", "min": 70},
+                {"stat": "agility", "min": 70},
+                {"stat": "intelligence", "max": 45}
+            ],
+            "summoner": [
+                {"stat": "defense", "min": 50},
+                {"stat": "agility", "min": 50},
+                {"stat": "intelligence", "max": 30}
+            ]
+        }
     }
 }
+
+def get_mythic_conditions(mythic_name, conditions, target_archetype=None):
+    """
+    Get the appropriate conditions for a mythic based on archetype.
+    Returns the specific archetype conditions if available, otherwise default conditions.
+    """
+    if isinstance(conditions, dict):
+        # Check for archetype-specific conditions
+        if target_archetype and target_archetype.lower() in conditions:
+            return conditions[target_archetype.lower()]
+        # Fall back to default conditions
+        elif "default" in conditions:
+            return conditions["default"]
+        else:
+            # If no default, use the first available condition set
+            return list(conditions.values())[0]
+    else:
+        # Old format - just return the list directly
+        return conditions
 
 def analyze_skillpoints(archetype, tolerance, start_date=None, end_date=None):
     conn = sqlite3.connect(db_path)
@@ -785,15 +968,6 @@ def get_archetypes_for_class(class_name):
     return class_archetypes.get(class_name.lower(), [])
 
 def graph_all_archetype_shares_overtime(start_date, end_date, raid="all", moving_average=False, ma_window=3):
-    """
-    Plots the share of all archetypes over time for a specified raid or all raids.
-    Parameters:
-        start_date (str): Start date in 'YYYY-MM-DD'
-        end_date (str): End date in 'YYYY-MM-DD'
-        raid (str): Raid name or 'all'
-        moving_average (bool): Whether to plot a moving average
-        ma_window (int): Window size for moving average
-    """
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     if raid == "all":
@@ -927,10 +1101,6 @@ def plot_archetype_sp_band_usage():
     plt.show()
 
 def analyze_raid_frequency():
-    """
-    Analyzes raid frequency and percentages based on user-specified criteria.
-    Shows archetype breakdown with frequency and percentages.
-    """
     print("\nRaid Frequency Analysis")
     print("1. All raids")
     print("2. Specified raid(s)")
@@ -1065,9 +1235,6 @@ def analyze_raid_frequency():
             print("No valid archetype data found for the specified criteria.")
 
 def count_datapoints_between_dates():
-    """
-    Counts the number of datapoints between two specified dates.
-    """
     print("\nDatapoint Count Analysis")
     start_date = input("Enter start date (YYYY-MM-DD): ").strip()
     end_date = input("Enter end date (YYYY-MM-DD): ").strip()
@@ -1272,10 +1439,14 @@ def analyze_mythic_usage_patterns():
     total_overlaps = 0
     
     for stats in rows:
+        if all(stat == 0 for stat in stats):
+            continue
+            
         matched_mythics = []
         
         for mythic_name, conditions in patterns.items():
-            if matches_pattern(stats, conditions):
+            actual_conditions = get_mythic_conditions(mythic_name, conditions, archetype)
+            if matches_pattern(stats, actual_conditions):
                 mythic_matches[mythic_name] += 1
                 matched_mythics.append(mythic_name)
         
@@ -1285,7 +1456,6 @@ def analyze_mythic_usage_patterns():
             overlapping_matches.append((stats, matched_mythics))
             total_overlaps += 1
     
-    # Print detailed statistics
     print(f"\n{'='*60}")
     print("MYTHIC USAGE ANALYSIS RESULTS")
     print(f"{'='*60}")
@@ -1344,18 +1514,340 @@ def analyze_mythic_usage_patterns():
     
     print(f"\n{'='*60}")
 
+def debug_unmatched_mythic_builds():
+    print("\nMythic Build Debugging - Unmatched Configurations")
+    
+    archetype = input("Enter archetype to debug: ").strip()
+    
+    archetype_class = None
+    for class_name, archetypes in class_archetypes.items():
+        if archetype.lower() in [arch.lower() for arch in archetypes]:
+            archetype_class = class_name
+            break
+    
+    if not archetype_class:
+        print(f"Could not determine class for archetype '{archetype}'. Available archetypes:")
+        for class_name, archetypes in class_archetypes.items():
+            print(f"  {class_name.capitalize()}: {', '.join(archetypes)}")
+        return
+    
+    use_dates = input("Filter by date range? (yes/no): ").lower() == "yes"
+    if use_dates:
+        start_date = input("Enter start date (YYYY-MM-DD): ").strip()
+        end_date = input("Enter end date (YYYY-MM-DD): ").strip()
+    
+   
+    
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+    
+    if use_dates:
+        cursor.execute("""
+        SELECT strength, dexterity, intelligence, defense, agility
+        FROM character_data
+        WHERE LOWER(archetype) = ? AND DATE(timestamp) BETWEEN ? AND ?
+        """, (archetype.lower(), start_date, end_date))
+        print(f"\nAnalyzing {archetype} builds from {start_date} to {end_date}")
+    else:
+        cursor.execute("""
+        SELECT strength, dexterity, intelligence, defense, agility
+        FROM character_data
+        WHERE LOWER(archetype) = ?
+        """, (archetype.lower(),))
+        print(f"\nAnalyzing all-time {archetype} builds")
+    
+    rows = cursor.fetchall()
+    conn.close()
+    
+    if not rows:
+        print(f"No data found for archetype '{archetype}'.")
+        return
+    
+    if archetype_class not in mythic_guess_patterns:
+        print(f"No mythic patterns defined for class '{archetype_class}'")
+        return
+    
+    patterns = mythic_guess_patterns[archetype_class]
+    
+    def matches_any_pattern(stats):
+        str_val, dex_val, int_val, def_val, agi_val = stats
+        stat_values = {
+            "strength": str_val,
+            "dexterity": dex_val, 
+            "intelligence": int_val,
+            "defense": def_val,
+            "agility": agi_val
+        }
+        
+        for mythic_name, conditions in patterns.items():
+            matches = True
+            actual_conditions = get_mythic_conditions(mythic_name, conditions, archetype)
+            for condition in actual_conditions:
+                stat = condition["stat"]
+                stat_value = stat_values[stat]
+                
+                if "min" in condition and stat_value < condition["min"]:
+                    matches = False
+                    break
+                if "max" in condition and stat_value > condition["max"]:
+                    matches = False
+                    break
+            
+            if matches:
+                return True
+        return False
+    
+    unmatched_builds = []
+    total_builds = len(rows)
+    
+    for stats in rows:
+        if all(stat == 0 for stat in stats):
+            continue
+            
+        if not matches_any_pattern(stats):
+            unmatched_builds.append(stats)
+    
+    print(f"Total builds analyzed: {total_builds}")
+    print(f"Unmatched builds (N/A): {len(unmatched_builds)}")
+    print(f"Unmatched percentage: {(len(unmatched_builds)/total_builds)*100:.1f}%")
+    
+    if not unmatched_builds:
+        print("No unmatched builds found - all builds match existing mythic patterns!")
+        return
+    
+    df = pd.DataFrame(unmatched_builds, columns=["strength", "dexterity", "intelligence", "defense", "agility"])
+    
+    grouped = df.groupby(["strength", "dexterity", "intelligence", "defense", "agility"]).size().reset_index(name="count")
+    grouped = grouped.sort_values(by="count", ascending=False)
+    
+    print(f"\n{'='*80}")
+    print("MOST COMMON UNMATCHED SKILL POINT CONFIGURATIONS")
+    print(f"{'='*80}")
+    print(f"{'Rank':<6} {'Count':<8} {'%':<6} {'STR':<5} {'DEX':<5} {'INT':<5} {'DEF':<5} {'AGI':<5}")
+    print("-" * 80)
+    
+    for i, row in grouped.head(15).iterrows():
+        rank = grouped.index.get_loc(i) + 1
+        count = row["count"]
+        percentage = (count / len(unmatched_builds)) * 100
+        
+        print(f"{rank:<6} {count:<8} {percentage:<6.1f} {row['strength']:<5} {row['dexterity']:<5} {row['intelligence']:<5} {row['defense']:<5} {row['agility']:<5}")
+    
+    print(f"\n{'='*80}")
+    print("SIMILAR CONFIGURATIONS (±5 tolerance from most common)")
+    print(f"{'='*80}")
+    
+    if not grouped.empty:
+        most_common = grouped.iloc[0]
+        tolerance = 5
+        
+        similar = grouped[
+            (grouped["strength"].between(most_common["strength"] - tolerance, most_common["strength"] + tolerance)) &
+            (grouped["dexterity"].between(most_common["dexterity"] - tolerance, most_common["dexterity"] + tolerance)) &
+            (grouped["intelligence"].between(most_common["intelligence"] - tolerance, most_common["intelligence"] + tolerance)) &
+            (grouped["defense"].between(most_common["defense"] - tolerance, most_common["defense"] + tolerance)) &
+            (grouped["agility"].between(most_common["agility"] - tolerance, most_common["agility"] + tolerance))
+        ]
+        
+        print(f"Most common build: STR:{most_common['strength']} DEX:{most_common['dexterity']} INT:{most_common['intelligence']} DEF:{most_common['defense']} AGI:{most_common['agility']} ({most_common['count']} occurrences)")
+        print(f"Similar builds within ±{tolerance}:")
+        print(f"{'Count':<8} {'%':<6} {'STR':<5} {'DEX':<5} {'INT':<5} {'DEF':<5} {'AGI':<5}")
+        print("-" * 50)
+        
+        total_similar = 0
+        for _, row in similar.iterrows():
+            count = row["count"]
+            percentage = (count / len(unmatched_builds)) * 100
+            total_similar += count
+            
+            print(f"{count:<8} {percentage:<6.1f} {row['strength']:<5} {row['dexterity']:<5} {row['intelligence']:<5} {row['defense']:<5} {row['agility']:<5}")
+        
+        print(f"\nTotal similar builds: {total_similar} ({(total_similar/len(unmatched_builds))*100:.1f}% of unmatched)")
+        
+        print(f"\n{'='*80}")
+        print("SUGGESTED MYTHIC PATTERN")
+        print(f"{'='*80}")
+        print("Based on the most common unmatched configuration, consider adding this mythic pattern:")
+        print(f'"NewMythic": [')
+        
+        suggested_conditions = []
+        stats = ["strength", "dexterity", "intelligence", "defense", "agility"]
+        
+        for stat in stats:
+            value = most_common[stat]
+            if value >= 70:
+                suggested_conditions.append(f'    {{"stat": "{stat}", "min": {value-10}}}')
+            elif value <= 20:
+                suggested_conditions.append(f'    {{"stat": "{stat}", "max": {value+10}}}')
+        
+        if suggested_conditions:
+            print(",\n".join(suggested_conditions))
+        else:
+            print("    # Balanced build - consider specific stat combinations")
+        
+        print(']')
+
 def graph_mythic_usage_overtime():
-    """
-    Graphs mythic usage patterns over time. Can analyze:
-    1. All mythics for a specific class
-    2. All mythics for a specific archetype  
-    3. Share percentage of a single mythic over time
-    """
     print("\nMythic Usage Over Time Analysis")
     print("1. All mythics for a specific class")
     print("2. All mythics for a specific archetype")
     print("3. Share percentage of a single mythic")
-    analysis_type = input("Select option (1/2/3): ").strip()
+    print("4. Generate and save all archetype graphs (April 3rd 2025 to present)")
+    analysis_type = input("Select option (1/2/3/4): ").strip()
+    
+    if analysis_type == "4":
+        import os
+        from datetime import datetime
+        
+        output_dir = r"c:\Users\Student\Desktop\wynn programs\mythic_graphs"
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+        
+        start_date = "2025-04-03"
+        end_date = datetime.now().strftime("%Y-%m-%d")
+        
+        print(f"\nGenerating mythic usage graphs for all archetypes from {start_date} to {end_date}")
+        print("Using all raids data...")
+        print("This may take a while...")
+        
+        def matches_pattern(stats, pattern_conditions):
+            str_val, dex_val, int_val, def_val, agi_val = stats
+            stat_values = {
+                "strength": str_val,
+                "dexterity": dex_val, 
+                "intelligence": int_val,
+                "defense": def_val,
+                "agility": agi_val
+            }
+            
+            for condition in pattern_conditions:
+                stat = condition["stat"]
+                stat_value = stat_values[stat]
+                
+                if "min" in condition and stat_value < condition["min"]:
+                    return False
+                if "max" in condition and stat_value > condition["max"]:
+                    return False
+            
+            return True
+        
+        all_archetypes = []
+        for archetypes_list in class_archetypes.values():
+            all_archetypes.extend(archetypes_list)
+        
+        for archetype in all_archetypes:
+            print(f"Processing {archetype}...")
+            
+            archetype_class = None
+            for class_name, archetypes_list in class_archetypes.items():
+                if archetype in archetypes_list:
+                    archetype_class = class_name
+                    break
+            
+            if not archetype_class or archetype_class not in mythic_guess_patterns:
+                print(f"  Skipping {archetype} - no mythic patterns found")
+                continue
+            
+            patterns = mythic_guess_patterns[archetype_class]
+            
+            conn = sqlite3.connect(db_path)
+            cursor = conn.cursor()
+            
+            query = """
+            SELECT DATE(timestamp) as date, strength, dexterity, intelligence, defense, agility
+            FROM character_data
+            WHERE LOWER(archetype) = ? AND DATE(timestamp) BETWEEN ? AND ?
+            ORDER BY date
+            """
+            cursor.execute(query, (archetype.lower(), start_date, end_date))
+            
+            rows = cursor.fetchall()
+            conn.close()
+            
+            if not rows:
+                print(f"  No data found for {archetype}")
+                continue
+            
+            # Process data
+            daily_data = {}
+            for row in rows:
+                date = row[0]
+                stats = row[1:6]
+                
+                if all(stat == 0 for stat in stats):
+                    continue
+                
+                if date not in daily_data:
+                    daily_data[date] = {mythic: 0 for mythic in patterns.keys()}
+                    daily_data[date]["total"] = 0
+                
+                daily_data[date]["total"] += 1
+                
+                for mythic_name, conditions in patterns.items():
+                    actual_conditions = get_mythic_conditions(mythic_name, conditions, archetype)
+                    if matches_pattern(stats, actual_conditions):
+                        daily_data[date][mythic_name] += 1
+            
+            if not daily_data:
+                print(f"  No valid data for {archetype}")
+                continue
+            
+            dates = sorted(daily_data.keys())
+            df_data = []
+            
+            for date in dates:
+                row_data = {"date": pd.to_datetime(date)}
+                total = daily_data[date]["total"]
+                
+                for mythic in patterns.keys():
+                    count = daily_data[date][mythic]
+                    row_data[mythic] = count
+                
+                row_data["total"] = total
+                df_data.append(row_data)
+            
+            df = pd.DataFrame(df_data)
+            
+            plt.figure(figsize=(12, 7))
+            
+            mythic_names = list(patterns.keys())
+            
+            for i, mythic in enumerate(mythic_names):
+                percentages = []
+                for date in dates:
+                    total = daily_data[date]["total"]
+                    count = daily_data[date][mythic]
+                    percentage = (count / total * 100) if total > 0 else 0
+                    percentages.append(percentage)
+                
+                percentages_series = pd.Series(percentages)
+                ma_percentages = percentages_series.rolling(window=3, min_periods=1, center=True).mean()
+                
+                color = mythic_colors.get(mythic, plt.cm.Set3(i / len(mythic_names)))
+                
+                plt.plot(df["date"], ma_percentages, label=mythic, 
+                        linewidth=2, color=color)
+            
+            plt.ylabel("Usage Percentage (%)")
+            plt.title(f"Mythic Usage Share Over Time - {archetype} (3-day MA)")
+            plt.xlabel("Date")
+            plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+            plt.xticks(rotation=45)
+            
+            subtitle = f"{start_date} to {end_date} (All Raids)"
+            plt.figtext(0.5, 0.02, subtitle, ha='center', fontsize=10, style='italic')
+            
+            plt.tight_layout()
+            
+            filename = f"{archetype}_mythic_usage_{start_date}_to_{end_date}.png"
+            filepath = os.path.join(output_dir, filename)
+            plt.savefig(filepath, dpi=300, bbox_inches='tight')
+            plt.close()
+            
+            print(f"  Saved: {filename}")
+        
+        print(f"\nAll graphs saved to: {output_dir}")
+        return
     
     print("\n1. All raids")
     print("2. Specified raid(s)")
@@ -1491,6 +1983,9 @@ def graph_mythic_usage_overtime():
         date = row[0]
         stats = row[1:6] 
         
+        if all(stat == 0 for stat in stats):
+            continue
+        
         if date not in daily_data:
             daily_data[date] = {mythic: 0 for mythic in patterns.keys()}
             daily_data[date]["total"] = 0
@@ -1498,7 +1993,9 @@ def graph_mythic_usage_overtime():
         daily_data[date]["total"] += 1
         
         for mythic_name, conditions in patterns.items():
-            if matches_pattern(stats, conditions):
+            actual_conditions = get_mythic_conditions(mythic_name, conditions, 
+                                                      archetypes[0] if len(archetypes) == 1 else None)
+            if matches_pattern(stats, actual_conditions):
                 daily_data[date][mythic_name] += 1
     
     dates = sorted(daily_data.keys())
@@ -1591,6 +2088,79 @@ def graph_mythic_usage_overtime():
             percentage = (total_mythic / total_entries * 100) if total_entries > 0 else 0
             print(f"  {mythic}: {total_mythic} ({percentage:.1f}%)")
 
+def highest_daily_share_per_archetype(raid="all", start_date=None, end_date=None, min_days=1):
+    """
+    Prints the highest single-day share (%) achieved for each archetype.
+    Parameters:
+      raid: 'all' (default) or raid shorthand/name (e.g. 'nol','notg','tna','tcc' or full column like 'delta_nest_of_the_grootslangs')
+      start_date, end_date: optional 'YYYY-MM-DD' strings to restrict the date range
+      min_days: minimum number of days an archetype must appear to be reported (default 1)
+    Output format:
+      Boltslinger  22.3%  2025-05-07
+      Lightbender  21.0%  2025-04-30
+    """
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+
+    resolved = resolve_raid_input(raid) if raid else "all"
+    where_clauses = ["LOWER(archetype) IS NOT NULL", "LOWER(archetype) != 'n/a'"]
+    params = []
+
+    if resolved != "all":
+        where_clauses.append(f"{resolved} > 0")
+
+    if start_date and end_date:
+        where_clauses.append("DATE(timestamp) BETWEEN ? AND ?")
+        params.extend([start_date, end_date])
+    elif start_date:
+        where_clauses.append("DATE(timestamp) >= ?")
+        params.append(start_date)
+    elif end_date:
+        where_clauses.append("DATE(timestamp) <= ?")
+        params.append(end_date)
+
+    where_sql = " AND ".join(where_clauses)
+
+    query = f"""
+    SELECT DATE(timestamp) as date, LOWER(archetype) as archetype, COUNT(*) as cnt
+    FROM character_data
+    WHERE {where_sql}
+    GROUP BY date, archetype
+    """
+    df = pd.read_sql_query(query, conn, params=params)
+
+    conn.close()
+
+    if df.empty:
+        print("No data found for the specified criteria.")
+        return {}
+
+    # compute total per day and share
+    totals = df.groupby("date")["cnt"].sum().rename("total").reset_index()
+    df = df.merge(totals, on="date")
+    df["share"] = df["cnt"] / df["total"] * 100
+
+    results = []
+    for archetype in sorted(df["archetype"].unique()):
+        sub = df[df["archetype"] == archetype].copy()
+        if len(sub["date"].unique()) < min_days:
+            continue
+        idx = sub["share"].idxmax()
+        best = sub.loc[idx]
+        date_str = str(best["date"])
+        results.append((archetype.capitalize(), float(best["share"]), date_str))
+
+    if not results:
+        print("No archetypes met the criteria.")
+        return {}
+
+    # print nicely sorted by highest share
+    results_sorted = sorted(results, key=lambda x: x[1], reverse=True)
+    for archetype, share, date_str in results_sorted:
+        print(f"{archetype:<20} {share:5.1f}%  {date_str}")
+
+    return {a: {"share": s, "date": d} for a, s, d in results_sorted}
+
 # If make a new feature remember to add it here and in the choice selection
 if __name__ == "__main__":
     print("Select Analysis Type:")
@@ -1608,6 +2178,8 @@ if __name__ == "__main__":
     print("12. Count Datapoints Between Dates")
     print("13. Analyze Mythic Usage Patterns")
     print("14. Graph Mythic Usage Over Time")
+    print("15. Debug Unmatched Mythic Builds")
+    print("16. Highest Daily Share Per Archetype")
     choice = input("Enter the number of your choice: ")
 
     if choice == "1":
@@ -1687,5 +2259,17 @@ if __name__ == "__main__":
         analyze_mythic_usage_patterns()
     elif choice == "14":
         graph_mythic_usage_overtime()
+    elif choice == "15":
+        debug_unmatched_mythic_builds()
+    elif choice == "16":
+        raid_input = input("Enter the raid to analyze (or 'all' for all raids, or shorthand like 'nol', 'tcc'): ")
+        raid = resolve_raid_input(raid_input)
+        if raid is None:
+            print("Exiting due to invalid raid input.")
+        else:
+            start_date = input("Enter the start date (YYYY-MM-DD): ")
+            end_date = input("Enter the end date (YYYY-MM-DD): ")
+            min_days = int(input("Enter the minimum number of days an archetype must appear to be reported: "))
+            highest_daily_share_per_archetype(raid, start_date, end_date, min_days)
     else:
         print("Invalid choice. Exiting.")
