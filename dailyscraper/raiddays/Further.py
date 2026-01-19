@@ -488,22 +488,14 @@ mythic_guess_patterns = {
 }
 
 def get_mythic_conditions(mythic_name, conditions, target_archetype=None):
-    """
-    Get the appropriate conditions for a mythic based on archetype.
-    Returns the specific archetype conditions if available, otherwise default conditions.
-    """
     if isinstance(conditions, dict):
-        # Check for archetype-specific conditions
         if target_archetype and target_archetype.lower() in conditions:
             return conditions[target_archetype.lower()]
-        # Fall back to default conditions
         elif "default" in conditions:
             return conditions["default"]
         else:
-            # If no default, use the first available condition set
             return list(conditions.values())[0]
     else:
-        # Old format - just return the list directly
         return conditions
 
 def analyze_skillpoints(archetype, tolerance, start_date=None, end_date=None):
@@ -941,9 +933,6 @@ def create_archetype_infographic(raid, start_date_1, end_date_1, start_date_2, e
     plt.show()
 
 def resolve_raid_input(raid_input):
-    """
-    Resolves the raid input to the full raid name if a shorthand is provided.
-    """
     if raid_input.lower() in raid_shorthand_mapping:
         return raid_shorthand_mapping[raid_input.lower()]
     elif raid_input.lower() == "all":
@@ -955,9 +944,6 @@ def resolve_raid_input(raid_input):
         return None
 
 def get_archetypes_for_class(class_name):
-    """
-    Derives archetypes for a given class based on the comments in the archetype_colors dictionary.
-    """
     class_archetypes = {
         "archer": ["Boltslinger", "Trapper", "Sharpshooter"],
         "mage": ["Riftwalker", "Lightbender", "Arcanist"],
@@ -1329,10 +1315,6 @@ def count_datapoints_between_dates():
         print("No datapoints found for the specified criteria.")
 
 def analyze_mythic_usage_patterns():
-    """
-    Analyzes mythic usage patterns based on skill point allocations for a specific archetype.
-    Creates a pie chart showing mythic distribution and prints detailed statistics.
-    """
     print("\nMythic Usage Pattern Analysis")
     print("1. All raids")
     print("2. Specified raid(s)")
@@ -2089,16 +2071,6 @@ def graph_mythic_usage_overtime():
             print(f"  {mythic}: {total_mythic} ({percentage:.1f}%)")
 
 def highest_daily_share_per_archetype(raid="all", start_date=None, end_date=None, min_days=1):
-    """
-    Prints the highest single-day share (%) achieved for each archetype.
-    Parameters:
-      raid: 'all' (default) or raid shorthand/name (e.g. 'nol','notg','tna','tcc' or full column like 'delta_nest_of_the_grootslangs')
-      start_date, end_date: optional 'YYYY-MM-DD' strings to restrict the date range
-      min_days: minimum number of days an archetype must appear to be reported (default 1)
-    Output format:
-      Boltslinger  22.3%  2025-05-07
-      Lightbender  21.0%  2025-04-30
-    """
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
